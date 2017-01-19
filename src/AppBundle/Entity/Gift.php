@@ -35,6 +35,13 @@ class Gift
      */
     private $description;
 
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="price", type="float", nullable=true)
+     */
+    private $price;
+
 
     /**
      * Get id
@@ -93,5 +100,28 @@ class Gift
     {
         return $this->description;
     }
-}
 
+    /**
+     * Set price
+     *
+     * @param float $price
+     *
+     * @return Gift
+     */
+    public function setPrice($price)
+    {
+        $this->price = $price;
+
+        return $this;
+    }
+
+    /**
+     * Get price
+     *
+     * @return float
+     */
+    public function getPrice()
+    {
+        return $this->price;
+    }
+}

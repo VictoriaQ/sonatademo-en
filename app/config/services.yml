@@ -7,3 +7,8 @@ services:
 #    service_name:
 #        class: AppBundle\Directory\ClassName
 #        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
+    admin.gift:
+        class: AppBundle\Admin\GiftAdmin
+        arguments: [~, AppBundle\Entity\Gift, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Gifts }

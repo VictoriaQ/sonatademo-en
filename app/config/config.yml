@@ -74,3 +74,13 @@ sonata_block:
     blocks:
         sonata.admin.block.admin_list:
             contexts: [admin]
+
+sonata_admin:
+    dashboard:
+        groups:
+            demo.admin.main:
+                label:           Admin
+                label_catalogue: AppBundle
+                icon:            '<i class="fa fa-database"></i>'
+                items:
+                    - admin.gift
