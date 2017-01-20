@@ -18,8 +18,8 @@ class GiftAdmin extends AbstractAdmin
                 ->add('description')
             ->end()
             ->with('Participants', array('class' => 'col-md-6'))
-                ->add('addressee')
-                ->add('buyer')
+                ->add('addressee', null, array('class' => 'AppBundle\Entity\Addressee', 'choice_label' => 'fullName'))
+                ->add('buyer', null, array('class' => 'AppBundle\Entity\Buyer', 'choice_label' => 'fullName'))
             ->end()
             ;
     }
