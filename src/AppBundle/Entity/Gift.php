@@ -42,6 +42,20 @@ class Gift
      */
     private $price;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $addressee;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $buyer;
+
 
     /**
      * Get id
@@ -123,5 +137,53 @@ class Gift
     public function getPrice()
     {
         return $this->price;
+    }
+
+    /**
+     * Set addressee
+     *
+     * @param string $addressee
+     *
+     * @return Gift
+     */
+    public function setAddressee($addressee)
+    {
+        $this->addressee = $addressee;
+
+        return $this;
+    }
+
+    /**
+     * Get addressee
+     *
+     * @return string
+     */
+    public function getAddressee()
+    {
+        return $this->addressee;
+    }
+
+    /**
+     * Set buyer
+     *
+     * @param string $buyer
+     *
+     * @return Gift
+     */
+    public function setBuyer($buyer)
+    {
+        $this->buyer = $buyer;
+
+        return $this;
+    }
+
+    /**
+     * Get buyer
+     *
+     * @return string
+     */
+    public function getBuyer()
+    {
+        return $this->buyer;
     }
 }
