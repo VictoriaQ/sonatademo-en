@@ -45,17 +45,26 @@ class Gift
     /**
      * @var string
      *
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\ManyToOne(targetEntity="Addressee")
      */
     private $addressee;
 
     /**
      * @var string
      *
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\ManyToOne(targetEntity="Buyer")
      */
     private $buyer;
 
+    /**
+     * __toString
+     *
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->name;
+    }
 
     /**
      * Get id
@@ -139,14 +148,15 @@ class Gift
         return $this->price;
     }
 
+
     /**
      * Set addressee
      *
-     * @param string $addressee
+     * @param \AppBundle\Entity\Addressee $addressee
      *
      * @return Gift
      */
-    public function setAddressee($addressee)
+    public function setAddressee(\AppBundle\Entity\Addressee $addressee = null)
     {
         $this->addressee = $addressee;
 
@@ -156,7 +166,7 @@ class Gift
     /**
      * Get addressee
      *
-     * @return string
+     * @return \AppBundle\Entity\Addressee
      */
     public function getAddressee()
     {
@@ -166,11 +176,11 @@ class Gift
     /**
      * Set buyer
      *
-     * @param string $buyer
+     * @param \AppBundle\Entity\Buyer $buyer
      *
      * @return Gift
      */
-    public function setBuyer($buyer)
+    public function setBuyer(\AppBundle\Entity\Buyer $buyer = null)
     {
         $this->buyer = $buyer;
 
@@ -180,7 +190,7 @@ class Gift
     /**
      * Get buyer
      *
-     * @return string
+     * @return \AppBundle\Entity\Buyer
      */
     public function getBuyer()
     {
