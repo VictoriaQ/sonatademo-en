@@ -32,8 +32,8 @@ class GiftAdmin extends AbstractAdmin
     {
         $datagridMapper->add('name');
         $datagridMapper->add('price');
-        $datagridMapper->add('addressee');
-        $datagridMapper->add('buyer');
+        $datagridMapper->add('addressee', null, array('class' => 'AppBundle\Entity\Addressee', 'choice_label' => 'fullName'));
+        $datagridMapper->add('buyer', null, array('class' => 'AppBundle\Entity\Buyer', 'choice_label' => 'fullName'));
     }
 
     protected function configureListFields(ListMapper $listMapper)
