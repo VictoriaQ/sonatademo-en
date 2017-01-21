@@ -57,6 +57,17 @@ class Gift
     private $buyer;
 
     /**
+     * @ORM\ManyToMany(targetEntity="Shop", inversedBy="gifts")
+     * @ORM\JoinTable(name="shops_gifts")
+     */
+    private $shops;
+
+    public function __construct()
+    {
+       $this->shops = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
      * __toString
      *
      * @return string
@@ -195,5 +206,39 @@ class Gift
     public function getBuyer()
     {
         return $this->buyer;
+    }
+
+    /**
+     * Add shop
+     *
+     * @param \AppBundle\Entity\Shop $shop
+     *
+     * @return Gift
+     */
+    public function addShop(\AppBundle\Entity\Shop $shop)
+    {
+        $this->shops[] = $shop;
+
+        return $this;
+    }
+
+    /**
+     * Remove shop
+     *
+     * @param \AppBundle\Entity\Shop $shop
+     */
+    public function removeShop(\AppBundle\Entity\Shop $shop)
+    {
+        $this->shops->removeElement($shop);
+    }
+
+    /**
+     * Get shops
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getShops()
+    {
+        return $this->shops;
     }
 }

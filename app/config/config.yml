@@ -85,3 +85,4 @@ sonata_admin:
                 items:
                     - admin.gift
                     - admin.buyer
+                    - admin.shop

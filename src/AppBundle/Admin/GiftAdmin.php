@@ -21,6 +21,10 @@ class GiftAdmin extends AbstractAdmin
                 ->add('addressee', null, array('class' => 'AppBundle\Entity\Addressee', 'choice_label' => 'fullName'))
                 ->add('buyer', null, array('class' => 'AppBundle\Entity\Buyer', 'choice_label' => 'fullName'))
             ->end()
+            ->with('Shops', array('class' => 'col-md-6'))
+                ->add('shops', 'sonata_type_model', 
+                    array('by_reference' => false, 'expanded' => true, 'multiple' => true, 'label' => 'Shops'), array('admin_code' => 'admin.shop')) 
+            ->end()
             ;
     }
 

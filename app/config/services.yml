@@ -22,3 +22,8 @@ services:
         arguments: [~, AppBundle\Entity\Payment, ~]
         tags:
             - { name: sonata.admin, manager_type: orm, label: Payments }
+    admin.shop:
+        class: AppBundle\Admin\ShopAdmin
+        arguments: [~, AppBundle\Entity\Shop, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Shops }
