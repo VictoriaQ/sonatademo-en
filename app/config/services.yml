@@ -12,3 +12,13 @@ services:
         arguments: [~, AppBundle\Entity\Gift, ~]
         tags:
             - { name: sonata.admin, manager_type: orm, label: Gifts }
+    admin.buyer:
+        class: AppBundle\Admin\BuyerAdmin
+        arguments: [~, AppBundle\Entity\Buyer, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Buyers }
+    admin.payment:
+        class: AppBundle\Admin\PaymentAdmin
+        arguments: [~, AppBundle\Entity\Payment, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Payments }

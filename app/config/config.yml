@@ -84,3 +84,4 @@ sonata_admin:
                 icon:            '<i class="fa fa-database"></i>'
                 items:
                     - admin.gift
+                    - admin.buyer

@@ -36,6 +36,16 @@ class Buyer
     private $lastName;
 
     /**
+     * @ORM\OneToMany(targetEntity="Payment", mappedBy="buyer")
+     */
+    private $payments;
+
+    public function __construct()
+    {
+       $this->payments = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
      * __toString
      *
      * @return string
@@ -112,5 +122,52 @@ class Buyer
     {
         return $this->firstName.' '.$this->lastName;
     }
-}
 
+    /**
+     * Set payments
+     *
+     * @param \AppBundle\Entity\Payment $payments
+     *
+     * @return Buyer
+     */
+    public function setPayments(\AppBundle\Entity\Payment $payments = null)
+    {
+        $this->payments = $payments;
+
+        return $this;
+    }
+
+    /**
+     * Get payments
+     *
+     * @return \AppBundle\Entity\Payment
+     */
+    public function getPayments()
+    {
+        return $this->payments;
+    }
+
+    /**
+     * Add payment
+     *
+     * @param \AppBundle\Entity\Payment $payment
+     *
+     * @return Buyer
+     */
+    public function addPayment(\AppBundle\Entity\Payment $payment)
+    {
+        $this->payments[] = $payment;
+
+        return $this;
+    }
+
+    /**
+     * Remove payment
+     *
+     * @param \AppBundle\Entity\Payment $payment
+     */
+    public function removePayment(\AppBundle\Entity\Payment $payment)
+    {
+        $this->payments->removeElement($payment);
+    }
+}
