@@ -43,13 +43,6 @@ class GiftAdmin extends AbstractAdmin
         $listMapper->add('description', null, array('label' => 'Details'));
         $listMapper->add('addressee', null, array('editable' => true));
         $listMapper->add('buyer');
-        $listMapper->add('_action', null, array(
-            'actions' => array(
-                'show' => array(),
-                'edit' => array(),
-                'delete' => array(),
-            )
-        ))
-        ;
+        $listMapper->add('myField', 'string', array('template' => ':Admin:field_send_email.html.twig'));
     }
 }
