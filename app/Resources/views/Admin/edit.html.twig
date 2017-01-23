@@ -1,0 +1,38 @@
+{% extends 'SonataAdminBundle:CRUD:base_edit.html.twig' %}
+
+    {% block formactions %}
+        <div class="sonata-ba-form-actions well well-small form-actions">
+        {% block sonata_form_actions %}
+            {% if app.request.isxmlhttprequest %}
+                {% if admin.id(object) is not null %}
+                    <button type="submit" class="btn btn-success" name="btn_update"><i class="fa fa-save" aria-hidden="true"></i> {{ 'btn_update'|trans({}, 'SonataAdminBundle') }}</button>
+                {% else %}
+                    <button type="submit" class="btn btn-success" name="btn_create"><i class="fa fa-plus-circle" aria-hidden="true"></i> {{ 'btn_create'|trans({}, 'SonataAdminBundle') }}</button>
+                {% endif %}
+            {% else %}
+                {% if admin.supportsPreviewMode %}
+                    <button class="btn btn-info persist-preview" name="btn_preview" type="submit">
+                        <i class="fa fa-eye" aria-hidden="true"></i>
+                        {{ 'btn_preview'|trans({}, 'SonataAdminBundle') }}
+                    </button>
+                {% endif %}
+                {% if admin.id(object) is not null %}
+                    <button type="submit" class="btn btn-success" name="btn_update_and_edit"><i class="fa fa-save" aria-hidden="true"></i> {{ 'btn_update_and_edit_again'|trans({}, 'SonataAdminBundle') }}</button>
+
+                    {% if admin.isAclEnabled() and admin.hasroute('acl') and admin.isGranted('MASTER', object) %}
+                        <a class="btn btn-info" href="{{ admin.generateObjectUrl('acl', object) }}"><i class="fa fa-users" aria-hidden="true"></i> {{ 'link_edit_acl'|trans({}, 'SonataAdminBundle') }}</a>
+                    {% endif %}
+                {% else %}
+                    {% if admin.hasroute('edit') and admin.isGranted('EDIT') %}
+                        <button class="btn btn-success" type="submit" name="btn_create_and_edit"><i class="fa fa-save" aria-hidden="true"></i> {{ 'btn_create_and_edit_again'|trans({}, 'SonataAdminBundle') }}</button>
+                    {% endif %}
+                    {% if admin.hasroute('list') and admin.isGranted('LIST') %}
+                        <button type="submit" class="btn btn-success" name="btn_create_and_list"><i class="fa fa-save"></i> <i class="fa fa-list" aria-hidden="true"></i> {{ 'btn_create_and_return_to_list'|trans({}, 'SonataAdminBundle') }}</button>
+                    {% endif %}
+                    <button class="btn btn-success" type="submit" name="btn_create_and_create"><i class="fa fa-plus-circle" aria-hidden="true"></i> {{ 'btn_create_and_create_a_new_one'|trans({}, 'SonataAdminBundle') }}</button>
+                {% endif %}
+            {% endif %}
+        {% endblock %}
+        </div>
+    {% endblock formactions %}
+

@@ -76,6 +76,8 @@ sonata_block:
             contexts: [admin]
 
 sonata_admin:
+    templates:
+        edit: ':Admin:edit.html.twig'
     dashboard:
         groups:
             demo.admin.main:
