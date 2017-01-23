@@ -62,9 +62,17 @@ class Gift
      */
     private $shops;
 
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(type="boolean")
+     */
+    private $delivered;
+
     public function __construct()
     {
        $this->shops = new \Doctrine\Common\Collections\ArrayCollection();
+       $this->delivered = false;
     }
 
     /**
@@ -240,5 +248,29 @@ class Gift
     public function getShops()
     {
         return $this->shops;
+    }
+
+    /**
+     * Set delivered
+     *
+     * @param boolean $delivered
+     *
+     * @return Gift
+     */
+    public function setDelivered($delivered)
+    {
+        $this->delivered = $delivered;
+
+        return $this;
+    }
+
+    /**
+     * Get delivered
+     *
+     * @return boolean
+     */
+    public function getDelivered()
+    {
+        return $this->delivered;
     }
 }

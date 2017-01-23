@@ -43,6 +43,21 @@ class GiftAdmin extends AbstractAdmin
         $listMapper->add('description', null, array('label' => 'Details'));
         $listMapper->add('addressee', null, array('editable' => true));
         $listMapper->add('buyer');
+        $listMapper->add('delivered');
         $listMapper->add('myField', 'string', array('template' => ':Admin:field_send_email.html.twig'));
     }
+
+    public function createQuery($context = 'list')
+    {
+        $query = parent::createQuery($context);
+        $rootAlias = $query->getRootAliases()[0];
+        $query
+            ->andWhere(
+                $query->expr()->eq($rootAlias.'.delivered', ':wasDelivered'));
+
+        $query->setParameter('wasDelivered', false);
+
+        return $query;
+    }
+
 }
