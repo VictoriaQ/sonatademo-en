@@ -15,6 +15,20 @@ class GiftAdmin extends AbstractAdmin
         $collection->add('sendEmail', $this->getRouterIdParameter().'/send-email');
     }
 
+    public function getBatchActions()
+        {
+            $actions = parent::getBatchActions();
+
+            if ($this->hasRoute('edit') && $this->isGranted('EDIT')) {
+                    $actions['send_email'] = [
+                            'label'            => 'Send email',
+                            'ask_confirmation' => false,
+                            ];
+            }
+
+            return $actions;
+        }
+
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
