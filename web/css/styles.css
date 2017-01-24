@@ -8,3 +8,11 @@
 .skin-black .main-header .navbar{
     background-color: #b74025;
 }
+
+.skin-black .main-header .navbar li, .skin-black .main-header .navbar a{
+    color: #fff !important;
+}
+
+.skin-black .main-header .navbar a:hover{
+    color: #000 !important;
+}

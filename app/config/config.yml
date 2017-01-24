@@ -90,13 +90,13 @@ sonata_admin:
                 items:
                     - admin.gift
                     - admin.processed_gift
-            demo.admin.main:
-                label:           Admin
+            demo.admin.participants:
+                label:           Participants
                 label_catalogue: AppBundle
-                icon:            '<i class="fa fa-database"></i>'
+                icon:            '<i class="fa fa-user"></i>'
                 items:
                     - admin.buyer
-                    - admin.shop
+                    - admin.addressee
     assets:
         stylesheets:
             - bundles/sonatacore/vendor/bootstrap/dist/css/bootstrap.min.css

@@ -7,7 +7,7 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 
-class BuyerAdmin extends AbstractAdmin
+class AddresseeAdmin extends AbstractAdmin
 {
     protected function configureFormFields(FormMapper $formMapper)
     {
@@ -15,12 +15,6 @@ class BuyerAdmin extends AbstractAdmin
             ->with('Personal Data', array('class' => 'col-md-6'))
                 ->add('firstName')
                 ->add('lastName')
-            ->end()
-            ->with('Billing Address', array('class' => 'col-md-6'))
-                ->add('address')
-                ->add('city')
-                ->add('zipcode')
-                ->add('country')
             ->end()
             ;
     }
