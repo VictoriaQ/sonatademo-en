@@ -34,6 +34,22 @@ class GiftAdmin extends AbstractAdmin
         $datagridMapper->add('price');
         $datagridMapper->add('addressee', null, array('class' => 'AppBundle\Entity\Addressee', 'choice_label' => 'fullName'));
         $datagridMapper->add('buyer', null, array('class' => 'AppBundle\Entity\Buyer', 'choice_label' => 'fullName'));
+        $datagridMapper->add('myFilter', 'doctrine_orm_callback',
+            array(
+                'callback' => function($queryBuilder, $alias, $field, $value) {
+                        if (!$value['value']) {
+                                return;
+                            }
+                
+                            $queryBuilder->andWhere($alias.'.status != :status');
+                            $queryBuilder->setParameter('status', 'DELIVERED');
+                
+                                return true;
+                        },
+                                'field_type' => 'checkbox',
+                                'label' => 'Not delivered'
+                        ))   
+                        ;
     }
 
     protected function configureListFields(ListMapper $listMapper)
@@ -43,21 +59,21 @@ class GiftAdmin extends AbstractAdmin
         $listMapper->add('description', null, array('label' => 'Details'));
         $listMapper->add('addressee', null, array('editable' => true));
         $listMapper->add('buyer');
-        $listMapper->add('delivered');
+        $listMapper->add('status', 'string', array('template' => ':Admin:field_status.html.twig'));
         $listMapper->add('myField', 'string', array('template' => ':Admin:field_send_email.html.twig'));
     }
 
-    public function createQuery($context = 'list')
-    {
-        $query = parent::createQuery($context);
-        $rootAlias = $query->getRootAliases()[0];
-        $query
-            ->andWhere(
-                $query->expr()->eq($rootAlias.'.delivered', ':wasDelivered'));
+    //public function createQuery($context = 'list')
+    //{
+    //    $query = parent::createQuery($context);
+    //    $rootAlias = $query->getRootAliases()[0];
+    //    $query
+    //        ->andWhere(
+    //            $query->expr()->eq($rootAlias.'.delivered', ':wasDelivered'));
 
-        $query->setParameter('wasDelivered', false);
+    //    $query->setParameter('wasDelivered', false);
 
-        return $query;
-    }
+    //    return $query;
+    //}
 
 }

@@ -65,14 +65,14 @@ class Gift
     /**
      * @var boolean
      *
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(type="string", length=255)
      */
-    private $delivered;
+    private $status;
 
     public function __construct()
     {
        $this->shops = new \Doctrine\Common\Collections\ArrayCollection();
-       $this->delivered = false;
+       $this->status = 'PENDING';
     }
 
     /**
@@ -251,26 +251,26 @@ class Gift
     }
 
     /**
-     * Set delivered
+     * Set status
      *
-     * @param boolean $delivered
+     * @param string $status
      *
      * @return Gift
      */
-    public function setDelivered($delivered)
+    public function setStatus($status)
     {
-        $this->delivered = $delivered;
+        $this->status = $status;
 
         return $this;
     }
 
     /**
-     * Get delivered
+     * Get status
      *
-     * @return boolean
+     * @return string
      */
-    public function getDelivered()
+    public function getStatus()
     {
-        return $this->delivered;
+        return $this->status;
     }
 }
