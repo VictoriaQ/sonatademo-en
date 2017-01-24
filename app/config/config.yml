@@ -76,6 +76,8 @@ sonata_block:
             contexts: [admin]
 
 sonata_admin:
+    title: SunshinePHP
+    title_logo: 'img/logo.png'
     templates:
         edit: ':Admin:edit.html.twig'
     dashboard:
@@ -88,3 +90,22 @@ sonata_admin:
                     - admin.gift
                     - admin.buyer
                     - admin.shop
+    assets:
+        stylesheets:
+            - bundles/sonatacore/vendor/bootstrap/dist/css/bootstrap.min.css
+            - bundles/sonatacore/vendor/components-font-awesome/css/font-awesome.min.css
+            - bundles/sonatacore/vendor/ionicons/css/ionicons.min.css
+            - bundles/sonataadmin/vendor/admin-lte/dist/css/AdminLTE.min.css
+            - bundles/sonataadmin/vendor/admin-lte/dist/css/skins/skin-black.min.css
+            - bundles/sonataadmin/vendor/iCheck/skins/square/blue.css
+            - bundles/sonatacore/vendor/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css
+            - bundles/sonataadmin/vendor/jqueryui/themes/base/jquery-ui.css
+            - bundles/sonatacore/vendor/select2/select2.css
+            - bundles/sonatacore/vendor/select2-bootstrap-css/select2-bootstrap.min.css
+            - bundles/sonataadmin/vendor/x-editable/dist/bootstrap3-editable/css/bootstrap-editable.css
+            - bundles/sonataadmin/css/styles.css
+            - bundles/sonataadmin/css/layout.css
+            - bundles/sonataadmin/css/tree.css
+            - bundles/sonataadmin/css/colors.css
+            - css/styles.css
+
