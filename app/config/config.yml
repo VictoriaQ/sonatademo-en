@@ -81,6 +81,7 @@ sonata_admin:
     templates:
         edit: ':Admin:edit.html.twig'
         layout: ':Admin:layout.html.twig'
+        dashboard: ':Admin:dashboard.html.twig'
     dashboard:
         groups:
             demo.admin.main:
