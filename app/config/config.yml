@@ -81,15 +81,20 @@ sonata_admin:
     templates:
         edit: ':Admin:edit.html.twig'
         layout: ':Admin:layout.html.twig'
-        dashboard: ':Admin:dashboard.html.twig'
     dashboard:
         groups:
+            demo.admin.gifts:
+                label:           Gifts
+                label_catalogue: AppBundle
+                icon:            '<i class="fa fa-gift"></i>'
+                items:
+                    - admin.gift
+                    - admin.processed_gift
             demo.admin.main:
                 label:           Admin
                 label_catalogue: AppBundle
                 icon:            '<i class="fa fa-database"></i>'
                 items:
-                    - admin.gift
                     - admin.buyer
                     - admin.shop
     assets:

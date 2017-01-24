@@ -11,7 +11,12 @@ services:
         class: AppBundle\Admin\GiftAdmin
         arguments: [~, AppBundle\Entity\Gift, AppBundle:GiftAdmin]
         tags:
-            - { name: sonata.admin, manager_type: orm, label: Gifts }
+            - { name: sonata.admin, manager_type: orm, label: Active }
+    admin.processed_gift:
+        class: AppBundle\Admin\ProcessedGiftAdmin
+        arguments: [~, AppBundle\Entity\Gift, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Processed }
     admin.buyer:
         class: AppBundle\Admin\BuyerAdmin
         arguments: [~, AppBundle\Entity\Buyer, ~]

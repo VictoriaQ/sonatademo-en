@@ -8,26 +8,10 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Route\RouteCollection;
 
-class GiftAdmin extends AbstractAdmin
+class ProcessedGiftAdmin extends AbstractAdmin
 {
-    protected function configureRoutes(RouteCollection $collection)
-    {
-        $collection->add('sendEmail', $this->getRouterIdParameter().'/send-email');
-    }
-
-    public function getBatchActions()
-        {
-            $actions = parent::getBatchActions();
-
-            if ($this->hasRoute('edit') && $this->isGranted('EDIT')) {
-                    $actions['send_email'] = [
-                            'label'            => 'Send email',
-                            'ask_confirmation' => false,
-                            ];
-            }
-
-            return $actions;
-        }
+    protected $baseRouteName = 'processed_gift';
+    protected $baseRoutePattern = 'processed-gift';
 
     protected function configureFormFields(FormMapper $formMapper)
     {
@@ -80,7 +64,6 @@ class GiftAdmin extends AbstractAdmin
         $listMapper->add('addressee', null, array('editable' => true));
         $listMapper->add('buyer');
         $listMapper->add('status', 'string', array('template' => ':Admin:field_status.html.twig'));
-        $listMapper->add('myField', 'string', array('template' => ':Admin:field_send_email.html.twig'));
     }
 
     public function createQuery($context = 'list')
@@ -89,7 +72,7 @@ class GiftAdmin extends AbstractAdmin
         $rootAlias = $query->getRootAliases()[0];
         $query
             ->andWhere(
-                $query->expr()->neq($rootAlias.'.status', ':status'));
+                $query->expr()->eq($rootAlias.'.status', ':status'));
 
         $query->setParameter('status', 'DELIVERED');
 
