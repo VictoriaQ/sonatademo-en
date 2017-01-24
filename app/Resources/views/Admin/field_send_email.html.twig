@@ -1,7 +1,7 @@
 {% extends 'SonataAdminBundle:CRUD:base_list_field.html.twig' %}
 
 {% block field %}
-<a class="btn btn-primary btn-sm" href="">
+<a class="btn btn-primary btn-sm" href="{{ admin.generateObjectUrl('sendEmail', object) }}">
     <i class="fa fa-envelope"></i> Send
 </a>
 {% endblock %}

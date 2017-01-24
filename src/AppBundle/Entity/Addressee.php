@@ -36,6 +36,13 @@ class Addressee
     private $lastName;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=255)
+     */
+    private $email;
+
+    /**
      * __toString
      *
      * @return string
@@ -113,5 +120,28 @@ class Addressee
     {
         return $this->firstName.' '.$this->lastName;
     }
-}
 
+    /**
+     * Set email
+     *
+     * @param string $email
+     *
+     * @return Addressee
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    /**
+     * Get email
+     *
+     * @return string
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
+}

@@ -9,7 +9,7 @@ services:
 #        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
     admin.gift:
         class: AppBundle\Admin\GiftAdmin
-        arguments: [~, AppBundle\Entity\Gift, ~]
+        arguments: [~, AppBundle\Entity\Gift, AppBundle:GiftAdmin]
         tags:
             - { name: sonata.admin, manager_type: orm, label: Gifts }
     admin.buyer:
