@@ -24,6 +24,7 @@ services:
             - { name: sonata.admin, manager_type: orm, label: Buyers }
         calls:
             - [ setTemplate, [edit, :Admin:edit_buyer.html.twig]]
+            - [ addChild, ['@admin.payment']]
     admin.addressee:
         class: AppBundle\Admin\AddresseeAdmin
         arguments: [~, AppBundle\Entity\Addressee, ~]
