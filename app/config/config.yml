@@ -97,6 +97,13 @@ sonata_admin:
                 items:
                     - admin.buyer
                     - admin.addressee
+            demo.admin.settings:
+                label:           Settings
+                label_catalogue: AppBundle
+                icon:            '<i class="fa fa-gear"></i>'
+                items:
+                    - route:     config_myEdit
+                      label:     My Config
     assets:
         stylesheets:
             - bundles/sonatacore/vendor/bootstrap/dist/css/bootstrap.min.css

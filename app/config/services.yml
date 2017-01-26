@@ -40,3 +40,10 @@ services:
         arguments: [~, AppBundle\Entity\Shop, ~]
         tags:
             - { name: sonata.admin, manager_type: orm, label: Shops }
+    admin.config:
+        class: AppBundle\Admin\UserConfigurationAdmin
+        arguments: [~, AppBundle\Entity\UserConfiguration, AppBundle:UserConfigurationAdmin]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: My Config }
+        calls:
+            - [ setTemplate, [myEdit, :Admin:config.html.twig]]
