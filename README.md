@@ -1,4 +1,6 @@
 sonatademo-en
 =============
 
-A Symfony project created on January 18, 2017, 4:37 pm.
+Symfony project with a working installation of SonataAdminBundle and code examples showing different customization techniques. Created for the SunshinePHP conference (Miami, Feb. 2-4, 2017).
+
+These are [the slides](https://speakerdeck.com/victoriaq/building-great-admin-panels-with-symfony-and-sonataadminbundle) from the talk.
